@@ -1,8 +1,8 @@
 {
-  "name": "live-form-validation",
-  "version": "1.9.0",
+  "name": "@contributte/live-form-validation",
+  "version": "2.0.0",
   "description": "Nice client-side live form validation for Nette Forms 2.4. Script by default works nicely with Twitter Bootstrap 3.",
-  "main": "live-form-validation.js",
+  "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/contributte/live-form-validation.git"
@@ -18,5 +18,23 @@
   "bugs": {
     "url": "https://github.com/contributte/live-form-validation/issues"
   },
-  "homepage": "https://github.com/contributte/live-form-validation/blob/master/README.md"
+  "homepage": "https://github.com/contributte/live-form-validation/blob/master/README.md",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "webpack-cli --mode=production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-loader": "^8.0.0-beta",
+    "nette-forms": "^2.4.2",
+    "typescript": "^2.9.2",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "peerDependencies": {
+    "nette-forms": "^2.4.2 || *"
+  }
 }

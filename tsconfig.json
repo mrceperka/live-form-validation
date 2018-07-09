@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "declarationDir": "./types",
+    "declaration": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["lib", "node_modules"],
+  "awesomeTypescriptLoaderOptions": {
+    "errorsAsWarnings": true, // REMOVE THIS ASAP
+    "useBabel": true,
+    "babelCore": "@babel/core"
+  }
+}
