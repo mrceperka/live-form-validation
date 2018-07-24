@@ -5,7 +5,7 @@ import LiveForm from './live-form'
 /**
  * Returns the value of form element.
  */
-const getValue = function(elem) {
+const getValue = function(elem: any): any {
   var i
   if (!elem) {
     return null
@@ -69,7 +69,13 @@ const getValue = function(elem) {
 /**
  * Validates form element against given rules.
  */
-const validateControl = function(elem, rules, onlyCheck, value, emptyOptional) {
+const validateControl = function(
+  elem: any,
+  rules: any,
+  onlyCheck: any,
+  value: any,
+  emptyOptional: any
+) {
   // LiveForm: addition
   // Fix for CheckboxList - validation rules are present always only on first input
   if (
@@ -133,7 +139,7 @@ const validateControl = function(elem, rules, onlyCheck, value, emptyOptional) {
       }
       if (!onlyCheck) {
         var arr = Nette.isArray(rule.arg) ? rule.arg : [rule.arg],
-          message = rule.msg.replace(/%(value|\d+)/g, function(foo, m) {
+          message = rule.msg.replace(/%(value|\d+)/g, function(_: any, m: any) {
             return getValue(
               m === 'value'
                 ? curElem
@@ -164,9 +170,9 @@ const validateControl = function(elem, rules, onlyCheck, value, emptyOptional) {
 /**
  * Validates whole form.
  */
-const validateForm = function(sender, onlyCheck) {
+const validateForm = function(sender: any, onlyCheck: any) {
   var form = sender.form || sender,
-    scope = false
+    scope: any = false
 
   // LiveForm: addition
   LiveForm.setFormProperty(form, 'hasError', false)
@@ -190,7 +196,7 @@ const validateForm = function(sender, onlyCheck) {
     }
   }
 
-  var radios = {},
+  var radios: any = {},
     i,
     elem
   // LiveForm: addition
@@ -244,7 +250,7 @@ const validateForm = function(sender, onlyCheck) {
 /**
  * Display error message.
  */
-const addError = function(elem, message) {
+const addError = function(elem: any, message: any) {
   // LiveForm: addition
   var noLiveValidation = LiveForm.hasClass(
     elem,
@@ -270,7 +276,7 @@ const addError = function(elem, message) {
 
         // Scroll by defined offset (if enabled)
         // NOTE: We use it with setTimetout because IE9 doesn't always catch instant scrollTo request
-        var focusOffsetY = LiveForm.options.focusScreenOffsetY
+        var focusOffsetY: any = LiveForm.options.focusScreenOffsetY
         if (
           focusOffsetY !== false &&
           elem.getBoundingClientRect().top < focusOffsetY
@@ -288,8 +294,9 @@ const addError = function(elem, message) {
 /**
  * Setup handlers.
  */
-const initForm = function(form) {
+const initForm = function(form: any) {
   form.noValidate = 'novalidate'
+  console.log(form)
 
   // LiveForm: addition
   LiveForm.forms[form.id] = {
@@ -297,14 +304,14 @@ const initForm = function(form) {
     onLoadValidation: false,
   }
 
-  Nette.addEvent(form, 'submit', function(e) {
+  Nette.addEvent(form, 'submit', function(e: any) {
     if (!Nette.validateForm(form)) {
       if (e && e.stopPropagation) {
         e.stopPropagation()
         e.preventDefault()
       } else if (window.event) {
-        event.cancelBubble = true
-        event.returnValue = false
+        window.event.cancelBubble = true
+        window.event.returnValue = false
       }
     }
   })
@@ -342,7 +349,7 @@ const initOnLoad = function() {
       }
     }
 
-    Nette.addEvent(document.body, 'click', function(e) {
+    Nette.addEvent(document.body, 'click', function(e: any) {
       var target = e.target || e.srcElement
       if (target.form && target.type in { submit: 1, image: 1 }) {
         target.form['nette-submittedBy'] = target
@@ -350,6 +357,8 @@ const initOnLoad = function() {
     })
   })
 }
+
+initOnLoad()
 export default {
   ...Nette,
   getValue,

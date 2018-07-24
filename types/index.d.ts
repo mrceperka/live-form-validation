@@ -1,10 +1,4 @@
-import * as NetteForms from './nette-forms';
-declare const _default: {
-    LiveForm: {
-        options: import("./options").TOptions;
-        forms: {};
-    };
-    NetteForms: typeof NetteForms;
-    options: import("./options").TOptions;
-};
-export default _default;
+import LiveForm from './live-form';
+import options from './options';
+import NetteForms from './nette-forms';
+export { LiveForm, NetteForms, options };

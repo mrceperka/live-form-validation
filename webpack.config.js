@@ -1,7 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index'),
@@ -14,7 +12,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
-  externals: [nodeExternals()],
   module: {
     rules: [
       {
